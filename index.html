@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aplicação web de dithering com Bayer, Floyd-Steinberg e Jarvis-Judice-Ninke.">
+  <title>DitherLab — Computação Visual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#inicio" class="brand" aria-label="DitherLab, início"><span class="brand-icon" aria-hidden="true">▦</span> Dither<span class="accent">Lab</span></a>
+    <span class="tag">PROJETO 2 · COMPUTAÇÃO VISUAL</span>
+  </header>
+
+  <main id="inicio" class="page">
+    <section class="intro">
+      <p class="eyebrow">UM PIXEL DE CADA VEZ</p>
+      <h1>Imagens com menos tons.<br><em>Mais possibilidades.</em></h1>
+      <p class="subtitle">Transforme suas imagens com três técnicas clássicas de dithering. Compare resultados, ajuste o número de tons e exporte um PNG — tudo no navegador.</p>
+    </section>
+
+    <div class="workspace">
+      <aside class="panel controls" aria-label="Controles de processamento">
+        <div class="section-heading"><span class="step">01</span><h2>Escolha uma imagem</h2></div>
+        <label for="fileInput" class="dropzone" id="dropzone">
+          <span class="drop-icon" aria-hidden="true">↥</span>
+          <strong>Arraste ou selecione uma imagem</strong>
+          <span>PNG, JPG, WEBP e outros formatos suportados pelo navegador</span>
+          <span class="file-cta">Escolher arquivo</span>
+        </label>
+        <input id="fileInput" type="file" accept="image/*" class="sr-only">
+        <button id="exampleBtn" class="subtle-button" type="button">✧ Usar imagem de exemplo</button>
+        <div id="imageInfo" class="image-info" aria-live="polite">Nenhuma imagem carregada.</div>
+
+        <div class="line"></div>
+        <div class="section-heading"><span class="step">02</span><h2>Ajuste o efeito</h2></div>
+        <label for="method" class="control-label">Algoritmo</label>
+        <select id="method">
+          <option value="bayer">Bayer (ordered dithering)</option>
+          <option value="floyd" selected>Floyd–Steinberg</option>
+          <option value="jarvis">Jarvis–Judice–Ninke</option>
+        </select>
+        <p id="methodDescription" class="helper-text">Distribui o erro de quantização para quatro pixels vizinhos.</p>
+
+        <label for="levels" class="control-label">Quantidade de tons</label>
+        <select id="levels">
+          <option value="2" selected>2 tons (preto e branco)</option>
+          <option value="4">4 tons de cinza</option>
+          <option value="8">8 tons de cinza</option>
+        </select>
+
+        <div class="slider-heading"><label for="contrast">Contraste</label><output id="contrastValue" for="contrast">100%</output></div>
+        <input type="range" id="contrast" min="50" max="150" step="5" value="100">
+        <div class="slider-heading"><label for="brightness">Brilho</label><output id="brightnessValue" for="brightness">0</output></div>
+        <input type="range" id="brightness" min="-60" max="60" step="5" value="0">
+        <button id="resetBtn" class="subtle-button reset" type="button">↺ Restaurar ajustes</button>
+
+        <div class="line"></div>
+        <button id="downloadBtn" class="download-button" type="button" disabled>↓ Baixar imagem processada</button>
+        <p class="microcopy">Processamento local: sua imagem não é enviada a servidores.</p>
+      </aside>
+
+      <section class="panel showcase" aria-label="Pré-visualização">
+        <div class="showcase-top"><div><p class="eyebrow">RESULTADO EM TEMPO REAL</p><h2>Compare o antes e depois</h2></div><span class="live-status" id="status" role="status">Aguardando imagem</span></div>
+        <div class="preview-grid">
+          <div class="preview-card"><div class="preview-heading"><h3>Original</h3><span class="preview-pill">ENTRADA</span></div><div class="canvas-stage" id="originalStage"><canvas id="originalCanvas" aria-label="Imagem original"></canvas><span class="placeholder" id="originalPlaceholder">Sua imagem aparecerá aqui</span></div></div>
+          <div class="preview-card"><div class="preview-heading"><h3>Dithering</h3><span class="preview-pill active">SAÍDA</span></div><div class="canvas-stage" id="resultStage"><canvas id="resultCanvas" aria-label="Imagem processada"></canvas><span class="placeholder" id="resultPlaceholder">O efeito aparecerá aqui</span></div></div>
+        </div>
+        <div class="metrics"><div><span class="metric-label">Algoritmo</span><strong id="metricMethod">—</strong></div><div><span class="metric-label">Tons</span><strong id="metricLevels">—</strong></div><div><span class="metric-label">Resolução</span><strong id="metricSize">—</strong></div><div><span class="metric-label">Processamento</span><strong id="metricTime">—</strong></div></div>
+        <div class="explain"><h3>O que é dithering?</h3><p>Dithering simula tons intermediários por meio de padrões de pontos. Mesmo usando poucas tonalidades reais, o olho humano percebe texturas e transições suaves.</p><p><strong>Bayer</strong> aplica uma matriz de limiares ordenados. <strong>Floyd–Steinberg</strong> distribui o erro para quatro vizinhos. <strong>Jarvis–Judice–Ninke</strong> espalha o erro por uma vizinhança maior, produzindo outra textura.</p></div>
+      </section>
+    </div>
+  </main>
+  <footer><span>DitherLab · Trabalho acadêmico · 2026</span><span>Feito com HTML, CSS e JavaScript</span></footer>
+  <script src="dither.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
