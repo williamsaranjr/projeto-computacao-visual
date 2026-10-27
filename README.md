@@ -16,7 +16,7 @@ William Saran dos Santos Junior - RA 10420128
 
 ### Link do projeto
 
-Clique neste link para acessar através do GitHub Pages: 
+Clique neste link para acessar através do GitHub Pages: [Página da aplicação](https://williamsaranjr.github.io/projeto-computacao-visual/)
 
 ### Referências
 BAYER, B. E. An Optimum Method for Two-Level Rendition of Continuous-Tone Pictures. 1973.
