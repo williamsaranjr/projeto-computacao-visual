@@ -1,10 +1,12 @@
 ### Integrantes
 
-Andrey Bezerra Virginio dos Santos - RA 10420696
-Bruna Soncini Nunes - RA 10428267
-Igor Silva Araujo - RA 10428505
-Julia Vitória Bomfim do Nascimento - RA 10425604
-William Saran dos Santos Junior - RA 10420128
+Nome | RA
+-: | :-
+Andrey Bezerra Virginio dos Santos | 10420696
+Bruna Soncini Nunes | 10428267
+Igor Silva Araujo | 10428505
+Julia Vitória Bomfim do Nascimento | 10425604
+William Saran dos Santos Junior | 10420128
 
 ### Execução
 1. Extrair os arquivos do ZIP.
