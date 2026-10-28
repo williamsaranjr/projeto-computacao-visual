@@ -1,3 +1,5 @@
+O conteúdo desse arquivo é essencialmente o mesmo do arquivo `README.txt`.
+
 ### Integrantes
 
 Nome | RA
